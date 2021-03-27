@@ -46,10 +46,23 @@ public:
             cout << "Required number of copies not available . \n";
         }
     }
+    void editbook() {
+        cout << "Please Enter the name of the Author :";
+        getline(cin, author);
+        cout << "Please Enter the title name :";
+        getline(cin, book_name);
+        cout << "Please Enter the name of the Publisher :";
+        getline(cin, publisher);
+        cout << "Please Enter the price :";
+        cin >> price;
+        cout << "Please Enter the stock position of the Book :";
+        cin >> stock;
+    }
     void showbook() {
         cout << "Author: " << author << "\t" << "Title: " << book_name << "\t" << "Publisher: "  << publisher << "\t" << "price: " << price << "\t" <<"Stock position: "<< stock << endl;
 
     }
+
 
 };
 void menu() {
@@ -59,6 +72,7 @@ void menu() {
     cout << "3. Search for a Book \n";
     cout << "4. Edit Details of Book \n";
     cout << "5. Exit \n";
+    cout << "Enter Your Choice : \n";
 }
 
 int main() {
@@ -91,7 +105,7 @@ int main() {
                 }
             }
             if (q == 0) {
-                cout << " This book is not available .";
+                cout << " This Book is not available .";
             }
                 break;
         case 3:
@@ -109,11 +123,32 @@ int main() {
                 }
             }
             if (q == 0) {
-                cout << " This book is not available .";
+                cout << " This Book is not available .";
             }
             break;
-        default:
+        case 4:
+            cout << "Enter the name of the book:";
+            cin.ignore();
+            getline(cin, bookname);
+            cout << "Enter the name of the Author:";
+            getline(cin, writer);
+            for (int k = 0;k < i;i++) {
+                if (obj1[k]->searchbook(bookname, writer) == true) {
+                    cout << "Book Found Sucessfully found . \n";
+                    obj1[k]->editbook();
+                    cout << "Book Details Sucessfully Edited . \n";
+                    q = 1;
+                    break;
+                }
+            }
+            if (q==0){
+                cout << "This Book is not available \n";
+            }
             break;
+        case 5:
+            exit(0);
+        default:
+            cout << "The Choice you Entered is Invalid, Try Again \n" ;
             }
 
         }
